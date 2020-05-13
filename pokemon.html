@@ -41,8 +41,8 @@
             
 
             function getPoke(name){
+                var $body = $('#pokedex');
                 $.get('https://pokeapi.co/api/v2/pokemon/'+name, function(data){
-                    var $body = $('#pokedex');
                     $body.empty();
                     $('#title').html(data.name)
                     var image = document.createElement('img');
@@ -55,6 +55,7 @@
                         $('ul').append('<li>'+t.type.name+'</li>')
                     })
                 }).fail(function(){
+                    $body.empty();
                     $('#title').html("ce pokemon n'existe pas")
                 })
             } 
